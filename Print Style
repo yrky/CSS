@@ -1,0 +1,50 @@
+	<style>
+		/* Stilo para impressao de uma pagina. Só sera para impressao */
+			/* Tirar as cores da pagina e sombras */
+/* !important serve para garantir que esta regra sobrescreva qualquer outro seletor do CSS. */
+		@media print{
+			* {
+				background: transparent !important;
+				color: #000 !important;
+				box-shadow: none !important;
+				text-shadow: none !important;
+			}
+/* para mostrar que é um link na impressao */
+			a{
+				text-decoration: underline !important;
+			}
+/* mostra o caminho do link */
+			a[href]::after{
+				content: " (" attr(href) ")";
+			}
+/* remove links de javascript */
+			a[href^="javascript:"]::after, a[href^="#"]::after{
+				content: "";
+			}
+	/* para quebra de pagina na impressao */
+			article{
+				page-break-after: always;
+			}
+		}
+/* para configurar pontos especificos para quebra de pagina 
+		.page-break{
+			display: none;
+		}
+
+		@media print{
+			.page-break{
+				display: block;
+				page-break-before: always;
+			}
+		}
+		*/
+
+		/* Para definir onde a pagina NÃO pode ser quebrada 
+
+		p{
+			page-break-inside: avoid;
+		}
+
+		*/
+
+	</style>
